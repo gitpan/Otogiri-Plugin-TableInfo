@@ -4,7 +4,7 @@
       "Takuya Tsuchida <tsucchi@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v0.14.1",
+   "generated_by" : "Minilla/v2.1.1",
    "license" : [
       "perl_5"
    ],
@@ -57,6 +57,7 @@
       },
       "test" : {
          "requires" : {
+            "DBD::SQLite" : "0",
             "Test::Differences" : "0",
             "Test::More" : "0",
             "Test::Requires" : "0"
@@ -66,7 +67,7 @@
    "provides" : {
       "Otogiri::Plugin::TableInfo" : {
          "file" : "lib/Otogiri/Plugin/TableInfo.pm",
-         "version" : "0.01"
+         "version" : "0.02"
       },
       "Otogiri::Plugin::TableInfo::Pg" : {
          "file" : "lib/Otogiri/Plugin/TableInfo/Pg.pm"
@@ -86,5 +87,5 @@
          "web" : "https://github.com/tsucchi/p5-Otogiri-Plugin-TableInfo"
       }
    },
-   "version" : "0.01"
+   "version" : "0.02"
 }
