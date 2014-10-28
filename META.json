@@ -67,7 +67,7 @@
    "provides" : {
       "Otogiri::Plugin::TableInfo" : {
          "file" : "lib/Otogiri/Plugin/TableInfo.pm",
-         "version" : "0.02"
+         "version" : "0.03"
       },
       "Otogiri::Plugin::TableInfo::Pg" : {
          "file" : "lib/Otogiri/Plugin/TableInfo/Pg.pm"
@@ -87,5 +87,5 @@
          "web" : "https://github.com/tsucchi/p5-Otogiri-Plugin-TableInfo"
       }
    },
-   "version" : "0.02"
+   "version" : "0.03"
 }

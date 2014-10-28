@@ -8,18 +8,26 @@ use Otogiri::Plugin;
 use DBIx::Inspector;
 use Otogiri::Plugin::TableInfo::Pg;
 
-our $VERSION = "0.02";
+our $VERSION = "0.03";
 
-our @EXPORT = qw(show_tables show_create_table show_create_view desc);
+our @EXPORT = qw(show_tables show_views show_create_table show_create_view desc);
 
 sub show_tables {
     my ($self, $like_regex) = @_;
     my $inspector = DBIx::Inspector->new(dbh => $self->dbh);
-    my @tables = $inspector->tables;
     my @result = map { $_->name } $inspector->tables;
     @result = grep { $_ =~ /$like_regex/ } @result if ( defined $like_regex );
     return @result;
 }
+
+sub show_views {
+    my ($self, $like_regex) = @_;
+    my $inspector = DBIx::Inspector->new(dbh => $self->dbh);
+    my @result = map { $_->name } $inspector->views;
+    @result = grep { $_ =~ /$like_regex/ } @result if ( defined $like_regex );
+    return @result;
+}
+
 
 sub show_create_table {
     my ($self, $table_name) = @_;
@@ -108,6 +116,11 @@ parameter C<$like_regex> is optional. If it is passed, table name is filtered by
     my @table_names = $db->show_tables(qr/^user_/); # return table names that starts with 'user_'
 
 If C<$like_regex> is not passed, all table_names in current database are returned.
+
+=head2 my @view_names = $self->show_views([$like_regex]);
+
+returns view names in database.
+
 
 =head2 my $create_table_ddl = $self->desc($table_name);
 
