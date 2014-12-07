@@ -7,8 +7,9 @@ use Otogiri;
 use Otogiri::Plugin;
 use DBIx::Inspector;
 use Otogiri::Plugin::TableInfo::Pg;
+use Carp qw();
 
-our $VERSION = "0.03";
+our $VERSION = "0.04";
 
 our @EXPORT = qw(show_tables show_views show_create_table show_create_view desc);
 
@@ -36,7 +37,7 @@ sub show_create_table {
 
     return if ( !defined $table );
 
-    my $driver_name = $self->{dsn}->{driver};
+    my $driver_name = $self->maker->driver;
 
     if ( $driver_name eq 'mysql' ) {
         my ($row) = $self->search_by_sql("SHOW CREATE TABLE $table_name");
@@ -49,6 +50,8 @@ sub show_create_table {
         my $pg = Otogiri::Plugin::TableInfo::Pg->new($self);
         return $pg->show_create_table($table_name);
     }
+
+    Carp::carp "unsupported driver : $driver_name";
     return;
 }
 
@@ -59,7 +62,7 @@ sub show_create_view {
 
     return if ( !defined $view );
 
-    my $driver_name = $self->{dsn}->{driver};
+    my $driver_name = $self->maker->driver;
 
     if ( $driver_name eq 'mysql' ) {
         my ($row) = $self->search_by_sql("SHOW CREATE VIEW $view_name");
@@ -72,6 +75,8 @@ sub show_create_view {
         my $pg = Otogiri::Plugin::TableInfo::Pg->new($self);
         return $pg->show_create_view($view_name);
     }
+
+    Carp::carp "unsupported driver : $driver_name";
     return;
 }
 

@@ -31,7 +31,7 @@ no_index:
 provides:
   Otogiri::Plugin::TableInfo:
     file: lib/Otogiri/Plugin/TableInfo.pm
-    version: '0.03'
+    version: '0.04'
   Otogiri::Plugin::TableInfo::Pg:
     file: lib/Otogiri/Plugin/TableInfo/Pg.pm
   Otogiri::Plugin::TableInfo::PgKeywords:
@@ -48,4 +48,4 @@ resources:
   bugtracker: https://github.com/tsucchi/p5-Otogiri-Plugin-TableInfo/issues
   homepage: https://github.com/tsucchi/p5-Otogiri-Plugin-TableInfo
   repository: git://github.com/tsucchi/p5-Otogiri-Plugin-TableInfo.git
-version: '0.03'
+version: '0.04'
